@@ -6,7 +6,7 @@ COPY . ./optimism
 
 RUN apk update && apk upgrade && apk add curl git nodejs npm jq
 
-RUN npm install -g yarn
+RUN npm install -g yarn hardhat
 
 RUN cd /app/optimism \
     && yarn install \
