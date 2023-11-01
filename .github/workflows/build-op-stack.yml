@@ -2,8 +2,7 @@ name: Build OP Celestia Stack
 on:
   push:
     branches:
-      - 'develop'
-      - 'feat/add_build_push_to_ecr'
+      - 'celestia-develop'
 
 jobs:
   docker:
