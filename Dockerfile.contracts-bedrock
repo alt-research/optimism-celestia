@@ -6,9 +6,10 @@ COPY . ./optimism
 
 RUN apk update && apk upgrade && apk add curl git nodejs npm jq
 
-RUN npm install -g yarn hardhat
+RUN npm install -g yarn
 
 RUN cd /app/optimism \
+    && yarn add --dev hardhat --ignore-workspace-root-check \
     && yarn install \
     && yarn build \
     && mv /app/optimism/packages/contracts-bedrock/* /app \
