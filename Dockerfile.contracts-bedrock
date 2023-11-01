@@ -1,4 +1,4 @@
-FROM node:18.15.0-slim AS builder
+FROM node:18.15.0-slim
 
 WORKDIR /app
 
@@ -12,8 +12,3 @@ RUN npm install -g pnpm \
     && pnpm install \
     && mv /app/optimism/packages/contracts-bedrock/* /app \
     && rm -fr /app/optimism
-
-WORKDIR /app
-COPY --from=builder /app ./
-
-RUN apk update && apk add jq
