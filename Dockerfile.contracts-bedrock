@@ -1,14 +1,15 @@
-FROM node:18.15.0-slim
+FROM ghcr.io/foundry-rs/foundry
 
 WORKDIR /app
 
 COPY . ./optimism
 
-SHELL ["/bin/bash", "-c"]
+RUN apk update && apk upgrade && apk add curl git nodejs npm jq
 
-RUN apt-get update && apt-get install curl git -y
+RUN npm install -g yarn
 
-RUN npm install -g pnpm \
-    && pnpm install \
+RUN cd /app/optimism \
+    && yarn install \
+    && yarn build \
     && mv /app/optimism/packages/contracts-bedrock/* /app \
     && rm -fr /app/optimism
