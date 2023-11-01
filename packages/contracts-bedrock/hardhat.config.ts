@@ -106,7 +106,7 @@ const config: HardhatUserConfig = {
       live: true,
     },
     'getting-started': {
-      chainId: 5,
+      chainId: Number(process.env.CHAIN_ID),
       url: process.env.L1_RPC || '',
       accounts: [process.env.PRIVATE_KEY_DEPLOYER || ethers.constants.HashZero],
       live: true,
